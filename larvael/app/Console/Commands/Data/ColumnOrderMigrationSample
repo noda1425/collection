@@ -1,0 +1,74 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class ChangeOrder${table} extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        if (!app()->runningUnitTests() && Config::get('app.env') !== 'test') {
+            // 一時テーブル名を設定
+            Schema::table('${table}', function($table)
+            {
+                $table->rename('${table}_temp');
+            });
+
+            // 新規カラム情報を作成
+            Schema::create('${table}', function(Blueprint $table)
+            {
+                ${columnInfo}
+            });
+
+            // データを複製
+            $records = DB::table('${table}_temp')->get();
+            $insertRecords = [];
+            foreach ($records as $record) {
+                $insertRecords[] = (array)$record;
+            }
+            DB::table('${table}')->insert($insertRecords);
+
+            // 一時テーブル削除
+            Schema::dropIfExists('${table}_temp');
+        }
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        if (!app()->runningUnitTests() && Config::get('app.env') !== 'test') {
+            // 一時テーブル名を設定
+            Schema::table('${table}', function($table)
+            {
+                $table->rename('${table}_temp');
+            });
+
+            // 新規カラム情報を作成
+            Schema::create('${table}', function(Blueprint $table)
+            {
+                ${columnInfo}
+            });
+
+            // データを複製
+            $records = DB::table('${table}_temp')->get();
+            $insertRecords = [];
+            foreach ($records as $record) {
+                $insertRecords[] = (array)$record;
+            }
+            DB::table('${table}')->insert($insertRecords);
+
+            // 一時テーブル削除
+            Schema::dropIfExists('${table}_temp');
+        }
+    }
+}
