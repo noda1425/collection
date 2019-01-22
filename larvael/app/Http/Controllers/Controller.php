@@ -10,4 +10,13 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * []
+     * @return
+     */
+    public function converter()
+    {
+        return view('tools.jsonToArrayConverter');
+    }
 }
