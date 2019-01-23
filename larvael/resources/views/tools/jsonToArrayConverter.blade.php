@@ -23,8 +23,11 @@
             </div>
         </div>
         <div>
-            {!! Form::label('入力') !!}
-            {!! Form::textarea('inputData') !!}
+            <form action="Controller@jsonToArrayConvert" method="post">
+                <label>入力</label>
+                <textarea name="input" rows="30" cols="80"></textarea>
+                <input type="submit" name="送信">
+            </form>
         </div>
     </body>
 </html>

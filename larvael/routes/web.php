@@ -20,3 +20,5 @@ Route::get('/index', function () {
 });
 
 Route::get('converter', 'Controller@converter');
+
+Route::post('jsonToArrayConvert', 'Controller@jsonToArrayConvert');

@@ -19,4 +19,14 @@ class Controller extends BaseController
     {
         return view('tools.jsonToArrayConverter');
     }
+
+    /**
+     * []
+     * @return
+     */
+    public function jsonToArrayConvert()
+    {
+        dd(1);
+        return view('tools.jsonToArrayConverter');
+    }
 }
